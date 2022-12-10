@@ -12,4 +12,10 @@ public class MainController {
     private String getHome(){
         return "html/index.html";
     }
+
+    @GetMapping("/create")
+    private String getCreate() {
+        return "html/create.html";
+    }
+
 }
