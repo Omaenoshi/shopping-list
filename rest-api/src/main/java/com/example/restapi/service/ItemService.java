@@ -7,4 +7,6 @@ import org.springframework.stereotype.Service;
 public interface ItemService {
     void save(Item item);
     Iterable<Item> getItems();
+
+    void deleteById(long id);
 }

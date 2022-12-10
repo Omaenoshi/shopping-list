@@ -22,4 +22,9 @@ public class ItemServiceImpl implements ItemService {
     public Iterable<Item> getItems() {
         return itemRepository.findAll();
     }
+
+    @Override
+    public void deleteById(long id) {
+        itemRepository.deleteById(id);
+    }
 }

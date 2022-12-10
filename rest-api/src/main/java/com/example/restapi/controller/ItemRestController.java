@@ -18,11 +18,16 @@ public class ItemRestController {
 
     @GetMapping("/items")
     private Iterable<? extends Item> getItems(){
-        return null;
+        return itemService.getItems();
     }
 
     @PostMapping("/add")
     private void addItem(@RequestBody Item item) {
+        itemService.save(item);
+    }
 
+    @DeleteMapping("/delete")
+    private void deleteItem(@RequestBody long id) {
+        itemService.deleteById(id);
     }
 }

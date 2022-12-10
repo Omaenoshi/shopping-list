@@ -11,6 +11,11 @@ public class Item {
     private long id;
     private String text;
 
+    public Item(long id, String text) {
+        this.id = id;
+        this.text = text;
+    }
+
     public Item(String text) {
         this.text = text;
     }
@@ -21,5 +26,8 @@ public class Item {
 
     public String getText() {
         return text;
+    }
+    public long getId() {
+        return id;
     }
 }
