@@ -30,4 +30,9 @@ public class ItemRestController {
     private void deleteItem(@RequestBody long id) {
         itemService.deleteById(id);
     }
+
+    @PutMapping("/buy")
+    private void buyItem(@RequestBody long id) {
+        itemService.buy(id);
+    }
 }

@@ -10,10 +10,12 @@ public class Item {
     @GeneratedValue
     private long id;
     private String text;
+    private boolean isPurchased;
 
-    public Item(long id, String text) {
+    public Item(long id, String text, boolean isPurchased) {
         this.id = id;
         this.text = text;
+        this.isPurchased = isPurchased;
     }
 
     public Item(String text) {
@@ -21,13 +23,22 @@ public class Item {
     }
 
     public Item() {
+    }
 
+    public void buy() {
+        isPurchased = true;
     }
 
     public String getText() {
         return text;
     }
+
     public long getId() {
         return id;
     }
+
+    public boolean isPurchased() {
+        return isPurchased;
+    }
+
 }

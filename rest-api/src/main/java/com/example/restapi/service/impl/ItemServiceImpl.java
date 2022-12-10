@@ -27,4 +27,12 @@ public class ItemServiceImpl implements ItemService {
     public void deleteById(long id) {
         itemRepository.deleteById(id);
     }
+
+    @Override
+    public void buy(long id) {
+        Item item = itemRepository.findById(id).orElse(null);
+        assert item != null;
+        item.buy();
+        itemRepository.save(item);
+    }
 }
