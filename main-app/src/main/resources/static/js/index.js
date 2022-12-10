@@ -4,17 +4,39 @@ async function fetchItems() {
             method: 'GET'
         }).then(res => res.json());
 
+    sortResp(resp);
+
     const items = document.getElementById("items");
 
     for(let i = 0; i < resp.length; i++) {
         let el = document.createElement("li");
         let deleteBtn = addBtn(resp[i].id, 'Delete', deleteItem);
-        let buyBtn = addBtn(resp[i].id, 'Buy', buyItem);
-        el.append(resp[i].text);
+
+        if (resp[i].purchased) {
+            el.append(resp[i].text + ' (Bought)');
+        }
+        else {
+            let buyBtn = addBtn(resp[i].id, 'Buy', buyItem);
+            el.append(resp[i].text);
+            el.appendChild(buyBtn);
+        }
+
         el.appendChild(deleteBtn);
-        el.appendChild(buyBtn);
+
         items.appendChild(el);
     }
+}
+
+function sortResp(resp) {
+    resp.sort(function(a,b){
+        let x = a.purchased;
+        let y = b.purchased;
+
+        if(x>y){return 1;}
+        if(x<y){return -1;}
+
+        return 0;
+    });
 }
 
 function addBtn(id, text, functionOnClick) {
