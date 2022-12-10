@@ -19,14 +19,18 @@ async function fetchItems() {
 }
 
 async function deleteItem(event) {
-    await fetch("http://localhost:8081/api/delete",
+    const resp = await fetch("http://localhost:8081/api/delete",
         {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(event.target.id)
-        }).then(location.reload());
+        });
+
+    if (resp.ok) {
+        location.reload();
+    }
 }
 
 fetchItems();

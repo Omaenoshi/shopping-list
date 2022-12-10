@@ -2,7 +2,7 @@ async function create() {
     let item = document.getElementById("text");
     let text = item.value;
 
-    await fetch("http://localhost:8081/api/add",
+    const resp = await fetch("http://localhost:8081/api/add",
         {
             method: 'POST',
             headers: {
@@ -10,4 +10,8 @@ async function create() {
             },
             body: JSON.stringify(text)
         });
+
+    if (resp.ok) {
+        window.location.href = '/';
+    }
 }
